@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const family_file = "family.json"
+const fs = require('fs')
 
 // define the home page route
 router.get('/', function (req, res) {
