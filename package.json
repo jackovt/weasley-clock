@@ -1,0 +1,29 @@
+{
+  "name": "weasley",
+  "version": "1.0.0",
+  "description": "NodeJS Server to handle request to the Weasley Clock",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackovt/weasley-clock.git"
+  },
+  "keywords": [
+    "harry",
+    "potter",
+    "wealey",
+    "clock",
+    "node",
+    "nodejs",
+    "raspberry",
+    "pi"
+  ],
+  "author": "Jack Hughes <jack@jackair.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jackovt/weasley-clock/issues"
+  },
+  "homepage": "https://github.com/jackovt/weasley-clock#readme"
+}
