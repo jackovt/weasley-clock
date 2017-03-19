@@ -1,7 +1,10 @@
 var express = require('express')
 var router = express.Router()
+var fs = require('fs')
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
+
 const family_file = "family.json"
-const fs = require('fs')
 
 // define the home page route
 router.get('/', function (req, res) {
@@ -13,7 +16,7 @@ router.get('/about', function (req, res) {
 })
 
 function readFamily() {
-    fs.readFile(('../data/' + family_file), 'utf8', function readFileCallback(err, data){
+    fs.readFile((appDir + '/data/' + family_file), 'utf8', function readFileCallback(err, data){
         if (err){
             console.log(err)
         } else {
