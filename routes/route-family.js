@@ -9,8 +9,10 @@ const familyPath = (appDir + '/data/' + familyFile)
 
 // define the home page route
 router.get('/', function (req, res) {
+    var json = readFamily()
     console.log(familyPath)
-    res.json(readFamily())
+    console.log(json)
+    res.json(json)
 })
 // define the about route
 router.get('/about', function (req, res) {
@@ -23,6 +25,7 @@ function readFamily() {
             console.log(err)
         } else {
             obj = JSON.parse(data) //now it an object
+            console.log(obj)
             return obj
         }
     });
