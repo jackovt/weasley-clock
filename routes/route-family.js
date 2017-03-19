@@ -9,23 +9,50 @@ const familyPath = (appDir + '/data/' + familyFile)
 
 // define the home page route
 router.get('/', function (req, res) {
-    var json = readFamily(res)
+    console.log(familyPath)
+    readFamily(res)
 })
 // define the about route
 router.get('/about', function (req, res) {
   res.send('About Page')
 })
 
-function readFamily(res) {
+// define the home page route
+router.get('/:familyMemberId', function (req, res) {
+    var familyMemberId = req.params.familyMemberId
+    readFamily(res, familyMemberId)
+})
+
+function readFamily(res, familyMemberId) {
     fs.readFile(familyPath, 'utf8', function readFileCallback(err, data){
         if (err){
             console.log(err)
             throw new Error("can't read file")
         } else {
             obj = JSON.parse(data)
-            console.log(familyPath)
-            console.log(obj)
-            res.json(obj)
+            if (obj) {
+                if (!familyMemberId) {
+                    console.log(obj)
+                    res.json(obj)
+                } else {
+                    if (obj.members && obj.members.length && obj.members.length > 0) {
+                        var familyMembers = obj.members
+                        for (index = 0; index < familyMembers.length; ++index) {
+                            var familyMember = familyMembers[index]
+                            if (familyMember.id === familyMemberId) {
+                                console.log(obj)
+                                res.json(obj)
+                                return;
+                            }
+                        }
+                    }
+                    throw new Error("can't find family member")
+                    return;
+                }
+            } else {
+                console.log("family obj was null")
+                throw new Error("can't get family")
+            }
         }
     });
 }
