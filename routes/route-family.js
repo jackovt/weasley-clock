@@ -9,25 +9,23 @@ const familyPath = (appDir + '/data/' + familyFile)
 
 // define the home page route
 router.get('/', function (req, res) {
-    var json = readFamily()
-    console.log(familyPath)
-    console.log(json)
-    res.json(json)
+    var json = readFamily(res)
 })
 // define the about route
 router.get('/about', function (req, res) {
   res.send('About Page')
 })
 
-function readFamily() {
+function readFamily(res) {
     fs.readFile(familyPath, 'utf8', function readFileCallback(err, data){
         if (err){
             console.log(err)
-            return null
+            throw new Error("can't read file")
         } else {
             obj = JSON.parse(data)
+            console.log(familyPath)
             console.log(obj)
-            return obj
+            res.json(obj)
         }
     });
 }
