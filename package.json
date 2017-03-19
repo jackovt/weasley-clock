@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/jackovt/weasley-clock/issues"
   },
-  "homepage": "https://github.com/jackovt/weasley-clock#readme"
+  "homepage": "https://github.com/jackovt/weasley-clock#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
