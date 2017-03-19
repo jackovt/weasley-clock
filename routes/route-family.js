@@ -23,13 +23,13 @@ function readFamily() {
     fs.readFile(familyPath, 'utf8', function readFileCallback(err, data){
         if (err){
             console.log(err)
+            return null
         } else {
-            obj = JSON.parse(data) //now it an object
+            obj = JSON.parse(data)
             console.log(obj)
             return obj
         }
     });
-    return null
 }
 
 module.exports = router
