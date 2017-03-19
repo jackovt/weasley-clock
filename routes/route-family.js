@@ -12,15 +12,17 @@ router.get('/', function (req, res) {
     console.log(familyPath)
     readFamily(res)
 })
-// define the about route
-router.get('/about', function (req, res) {
-  res.send('About Page')
-})
 
 // define the home page route
 router.get('/:familyMemberId', function (req, res) {
     var familyMemberId = req.params.familyMemberId
+    console.log(familyMemberId)
     readFamily(res, familyMemberId)
+})
+
+// define the about route
+router.get('/about', function (req, res) {
+  res.send('About Page')
 })
 
 function readFamily(res, familyMemberId) {
