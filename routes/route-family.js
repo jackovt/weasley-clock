@@ -42,8 +42,8 @@ function readFamily(res, familyMemberId) {
                         for (index = 0; index < familyMembers.length; ++index) {
                             var familyMember = familyMembers[index]
                             if (familyMember.id === familyMemberId) {
-                                console.log(obj)
-                                res.json(obj)
+                                console.log(familyMember)
+                                res.json(familyMember)
                                 return;
                             }
                         }
