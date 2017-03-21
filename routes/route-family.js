@@ -40,7 +40,7 @@ function readFamilyJson(callback) {
 }
 
 function readFamily(res, familyMemberId) {
-    readFamily(function(obj) {
+    readFamilyJson(function(obj) {
         if (obj) {
             if (!familyMemberId) {
                 console.log(obj)
