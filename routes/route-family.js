@@ -75,7 +75,7 @@ function readFamilyByLocation(res, locationId) {
                     var familyMembers = obj.members
                     for (index = 0; index < familyMembers.length; ++index) {
                         var familyMember = familyMembers[index]
-                        if (familyMember.location === familyMemberId) {
+                        if (familyMember.location === locationId) {
                             console.log(familyMember)
                             res.json(familyMember)
                             return;
