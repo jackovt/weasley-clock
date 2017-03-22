@@ -18,6 +18,6 @@ app.all('/', function (req, res, next) {
 
 app.use('/', route_main)
 app.use('/family', route_family)
-app.use('/locations', route_locationså)
+app.use('/locations', route_locations)
 
 app.listen(port)
