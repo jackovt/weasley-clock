@@ -10,7 +10,7 @@ module.exports = {
     getAllFamily: function(callback) {
         readFamily(null, callback);
     },
-    getFamilyById: function(callback, familyMemberId) {
+    getFamilyById: function(familyMemberId, callback) {
         readFamily(familyMemberId, callback);
     },
     getFamilyByLocationId: function(locationId, callback) {
