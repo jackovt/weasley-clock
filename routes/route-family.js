@@ -5,14 +5,14 @@ var familyDao = require(appDir + '/data/family-dao.js')
 
 var router = express.Router()
 
-// define the home page route
+// GET all the family
 router.get('/', function (req, res) {
     familyDao.getAllFamily(function(family) {
         res.json(family)
     })
 })
 
-// define the home page route
+// GET the family member by id
 router.get('/:familyMemberId', function (req, res) {
     var familyMemberId = req.params.familyMemberId
     console.log(familyMemberId)
@@ -21,7 +21,7 @@ router.get('/:familyMemberId', function (req, res) {
     })
 })
 
-// define the home page route
+// GET the family members at the location with this id
 router.get('/location/:locationId', function (req, res) {
     var locationId = req.params.locationId
     console.log(locationId)

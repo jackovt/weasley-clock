@@ -63,14 +63,16 @@ function readFamilyByLocation(locationId, callback) {
             if (locationId) {
                 if (family.members && family.members.length && family.members.length > 0) {
                     var familyMembers = family.members
+                    var familyAtLocation = []
                     for (index = 0; index < familyMembers.length; ++index) {
                         var familyMember = familyMembers[index]
                         if (familyMember.location === locationId) {
-                            console.log(familyMember)
-            				callback(familyMember)
-                            return;
+                            familyAtLocation.push(familyMember)
                         }
                     }
+                    console.log(familyAtLocation)
+    				callback(familyAtLocation)
+                    return;
                 }
                 throw new Error("can't find family member")
                 return;
