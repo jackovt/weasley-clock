@@ -1,8 +1,8 @@
 var express = require('express')
 var router = express.Router()
-var appDir = path.dirname(require.main.filename);
-var fs = require('fs')
 var path = require('path');
+var fs = require('fs')
+var appDir = path.dirname(require.main.filename);
 var familyDao = require(appDir + '/data/family-dao.js');
 
 const familyFile = "family.json"
