@@ -1,19 +1,20 @@
 var express = require('express')
-var router = express.Router()
-var path = require('path');
+var path = require('path')
 var fs = require('fs')
-var appDir = path.dirname(require.main.filename);
-var familyDao = require(appDir + '/data/family-dao.js');
+var appDir = path.dirname(require.main.filename)
+var familyDao = require(appDir + '/data/family-dao.js')
 
 const familyFile = "family.json"
 const familyPath = (appDir + '/data/' + familyFile)
+
+var router = express.Router()
 
 // define the home page route
 router.get('/', function (req, res) {
     console.log(familyPath)
     familyDao.getAllFamily(function(family) {
         res.json(family)
-    });
+    })
 })
 
 // define the home page route
@@ -22,7 +23,7 @@ router.get('/:familyMemberId', function (req, res) {
     console.log(familyMemberId)
     familyDao.getFamilyById(familyMemberId, function(family) {
         res.json(family)
-    });
+    })
 })
 
 // define the home page route
@@ -31,7 +32,7 @@ router.get('/location/:locationId', function (req, res) {
     console.log(locationId)
     familyDao.getFamilyByLocationId(locationId, function(family) {
         res.json(family)
-    });
+    })
 })
 
 module.exports = router
