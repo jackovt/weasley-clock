@@ -25,7 +25,8 @@ router.get('/:familyMemberId', function (req, res) {
 router.post('/:familyMemberId', function (req, res) {
     var familyMemberId = req.params.familyMemberId
     var body = req.body;
-    console.log(familyMemberId)
+    console.log("familyMemberId: " + familyMemberId)
+    console.log("body: " + req.body)
     familyDao.updateFamilyLocationById(familyMemberId, body, function(family) {
         res.json(family)
     })
