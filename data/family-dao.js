@@ -14,6 +14,9 @@ module.exports = {
     },
     getFamilyByLocationId: function(locationId, callback) {
         readFamilyByLocation(locationId, callback);
+    },
+    updateFamilyLocationById: function(familyMemberId, location, callback) {
+    	setFamilyLocationById(familyMemberId, location, callback);
     }
 };
 
@@ -29,6 +32,19 @@ function readFamilyJson(callback) {
     });
 }
 
+function writeFamilyToFile(family, callback) {
+    fs.writeFile(familyPath, 'utf8', JSON.stringify(family, null, 2), function readFileCallback(err){
+        if (err){
+            console.log(err)
+            throw new Error("can't write file")
+        } else {
+        	console.log("successfully updated json file")
+            callback(family)
+            return;
+        }
+    });
+}
+
 function readFamily(familyMemberId, callback) {
     readFamilyJson(function(family) {
         if (family) {
@@ -36,17 +52,11 @@ function readFamily(familyMemberId, callback) {
                 console.log(family)
                 callback(family)
             } else {
-                if (family.members && family.members.length && family.members.length > 0) {
-                    var familyMembers = family.members
-                    for (index = 0; index < familyMembers.length; ++index) {
-                        var familyMember = familyMembers[index]
-                        if (familyMember.id === familyMemberId) {
-                            console.log(familyMember)
-            				callback(familyMember)
-                            return;
-                        }
-                    }
-                }
+            	var familyMember = getFamilyMemberById(familyMemberId, family);
+            	if (familyMember) {
+            		callback(familyMember)
+            		return;
+            	}
                 throw new Error("can't find family member")
                 return;
             }
@@ -82,4 +92,50 @@ function readFamilyByLocation(locationId, callback) {
             throw new Error("can't get family")
         }
     });
+}
+
+
+function setFamilyLocationById(familyMemberId, location, callback) {
+	if (!familyMemberId || !location || !callback) {
+		throw new Error("missing parameters")
+		return;
+	}
+	if (location.locationId) {
+		var locationId = location.locationId;
+		readFamily(function(family){
+			if (isValidFamily(family)) {
+		        var familyMembers = family.members
+		        var familyMember = null
+		        for (index = 0; index < familyMembers.length; ++index) {
+		            familyMember = familyMembers[index]
+		            if (familyMember.id === familyMemberId) {
+		                console.log("before: " + familyMember)
+						familyMember.location = locationId
+						family.members[index] = familyMember
+		                console.log("before: " + familyMember)
+		                break;
+		            }
+		        }
+		        writeFamilyToFile(family, callback)
+		        return;
+			}
+		})
+	}
+}
+
+function getFamilyMemberById(familyMemberId, family) {
+	if (familyMemberId && isValidFamily(family)) {
+        var familyMembers = family.members
+        for (index = 0; index < familyMembers.length; ++index) {
+            var familyMember = familyMembers[index]
+            if (familyMember.id === familyMemberId) {
+                console.log(familyMember)
+				return familyMember;
+            }
+        }
+	}
+}
+
+function isValidFamily(family) {
+	return family && family.members && family.members.length && family.members.length > 0;
 }
