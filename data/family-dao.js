@@ -119,13 +119,16 @@ function setFamilyLocationById(familyMemberId, location, callback) {
 		        }
 		        writeFamilyToFile(family, callback)
 		        return;
+			} else {
+				throw new Error("family is not valid")
+				return;
 			}
-			throw new Error("family is not valid")
-			return;
 		})
 	}
-	throw new Error("no locationId")
-	return;
+	else {
+		throw new Error("no locationId")
+		return;
+	}
 }
 
 function getFamilyMemberById(familyMemberId, family) {
