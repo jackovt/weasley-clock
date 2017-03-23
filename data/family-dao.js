@@ -127,6 +127,8 @@ function setFamilyLocationById(familyMemberId, location, callback) {
 }
 
 function getFamilyMemberById(familyMemberId, family) {
+	console.log("getFamilyMemberById(): familyMemberId: " + familyMemberId)
+	console.log("getFamilyMemberById(): family: " + family)
 	if (familyMemberId && isValidFamily(family)) {
         var familyMembers = family.members
         for (index = 0; index < familyMembers.length; ++index) {
@@ -140,5 +142,5 @@ function getFamilyMemberById(familyMemberId, family) {
 }
 
 function isValidFamily(family) {
-	return family && family.members && family.members.length && family.members.length > 0;
+	return (family && family.members && family.members.length && family.members.length > 0);
 }
