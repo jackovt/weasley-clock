@@ -6,6 +6,10 @@ var route_main = require('./routes/route-main')
 var route_family = require('./routes/route-family')
 var route_locations = require('./routes/route-locations')
 
+app.configure(function(){
+  app.use(express.bodyParser());
+});
+
 app.use((err, request, response, next) => {  
     // log the error, for now just console.log
     console.log(err);
