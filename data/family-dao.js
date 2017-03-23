@@ -102,6 +102,7 @@ function setFamilyLocationById(familyMemberId, location, callback) {
 	}
 	if (location.locationId) {
 		var locationId = location.locationId;
+		console.log("locationId: " + locationId)
 		readFamily(function(family){
 			if (isValidFamily(family)) {
 		        var familyMembers = family.members
@@ -121,6 +122,8 @@ function setFamilyLocationById(familyMemberId, location, callback) {
 			}
 		})
 	}
+	throw new Error("no locationId")
+	return;
 }
 
 function getFamilyMemberById(familyMemberId, family) {
