@@ -33,7 +33,7 @@ function readFamilyJson(callback) {
 }
 
 function writeFamilyToFile(family, callback) {
-    fs.writeFile(familyPath, 'utf8', JSON.stringify(family, null, 2), function readFileCallback(err){
+    fs.writeFile(familyPath, JSON.stringify(family, null, 2), 'utf8', function readFileCallback(err){
         if (err){
             console.log(err)
             throw new Error("can't write file")
@@ -120,6 +120,8 @@ function setFamilyLocationById(familyMemberId, location, callback) {
 		        writeFamilyToFile(family, callback)
 		        return;
 			}
+			throw new Error("family is not valid")
+			return;
 		})
 	}
 	throw new Error("no locationId")
