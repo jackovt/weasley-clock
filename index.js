@@ -7,7 +7,10 @@ var route_main = require('./routes/route-main')
 var route_family = require('./routes/route-family')
 var route_locations = require('./routes/route-locations')
 
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
 
 app.use((err, request, response, next) => {  
     // log the error, for now just console.log
