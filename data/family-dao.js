@@ -103,7 +103,7 @@ function setFamilyLocationById(familyMemberId, location, callback) {
 	if (location.locationId) {
 		var locationId = location.locationId;
 		console.log("locationId: " + locationId)
-		readFamily(function(family){
+		readFamily(null, function(family){
 			if (isValidFamily(family)) {
 		        var familyMembers = family.members
 		        var familyMember = null
