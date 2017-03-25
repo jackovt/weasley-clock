@@ -15,6 +15,22 @@
     {
       "id": "347f191e810c19729de860ed",
       "name": "Traveling"
+    },
+    {
+      "id": "347f191e810c19729de860ef",
+      "name": "Sleeping"
+    },
+    {
+      "id": "347f191e810c19729de860eg",
+      "name": "Mortal Peril"
+    },
+    {
+      "id": "347f191e810c19729de860eh",
+      "name": "Prison"
+    },
+    {
+      "id": "347f191e810c19729de860ei",
+      "name": "Target"
     }
   ]
 }
